@@ -1,7 +1,7 @@
 let config = {
   "verbose": false,
 	"testMatch": [ "<rootDir>/test/**/?(*.)(test).{js}" ],
-	"collectCoverage": false,
+	"collectCoverage": true,
 	"coverageReporters": [ "html" ],
 	"collectCoverageFrom": [ "src/**/*.{js}" ],
 	"coveragePathIgnorePatterns": [],
