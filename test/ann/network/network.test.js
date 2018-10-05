@@ -1,9 +1,14 @@
-import {node, annConfig, network} from '../../../src/ann/network/network';
+import {node, biasnode, annConfig, network} from '../../../src/ann/network/network';
 
 describe('network Test', () => {
 	it('node Test', () => {
 		let aNode = new node();
 		expect(aNode).toMatchObject({sum: 0, out: 0, gradient: 0});
+	});
+	
+	it('bias node Test', () => {
+		let bNode = new biasnode();
+		expect(bNode).toMatchObject({out: 1});
 	});
 	
 	it('annConfig Test', () => {
