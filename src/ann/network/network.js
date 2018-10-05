@@ -7,13 +7,16 @@ export class node {
 }
 
 export class biasnode {
-	constructor() {
-		this.out = 1;
-	}
+	constructor() { this.out = 1; }
 }
 
 export class annConfig {
-	constructor(numOfInputs, numberOfOutputs, hiddenlayers, activatorName, learningRate) {
+	constructor(numOfInputs,
+			numberOfOutputs,
+			hiddenlayers,
+			activatorName,
+			learningRate) {
+		
 		this.numOfInputs = numOfInputs;
 		this.numberOfOutputs = numberOfOutputs;
 		this.hiddenlayers = hiddenlayers;
@@ -37,7 +40,7 @@ export class network {
 			return output;
 		}
 		
-		let oLayer = layers[layers.length -1];
+		let oLayer = layers[layers.length - 1];
 		let length = oLayer.length;
 		for (let i = 0; i < length; i++) {
 			output[i] = oLayer[i].out;

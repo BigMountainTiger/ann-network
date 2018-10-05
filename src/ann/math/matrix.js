@@ -1,14 +1,16 @@
-import {node} from '../network/network';
+import {node, biasnode} from '../network/network';
 import {activatorFactory} from '../activations/activatorFactory';
 
 export const initiator = function() {
 	
-		let initLayer = function(n) {
+		let initLayer = function(n, skipBias) {
 			let nodes = [];
 			
 			for (let i = 0; i < n; i++) {
 				nodes[i] = new node();
 			}
+			
+			if (! skipBias) { nodes[n] = new biasnode();}
 			
 			return nodes;
 		};
@@ -20,6 +22,8 @@ export const initiator = function() {
 		
 				let r = [];
 				for (let j = 0; j < ni; j++) { r[j] = Math.random(); }
+				
+				r[ni] = Math.random();
 				
 				w[i] = r;
 			}
@@ -41,7 +45,7 @@ export const initiator = function() {
 					layers[i + 1] = initLayer(hl[i]);
 				}
 				
-				layers[l + 1] = initLayer(no);
+				layers[l + 1] = initLayer(no, true);
 				
 				return layers;
 			},
@@ -70,7 +74,7 @@ export const initiator = function() {
 export const operations = {
 	applyInput: function(l, input) {
 		
-		let length = l.length;
+		let length = input.length;
 		for (let i = 0; i < length; i++) {
 			let value = input[i];
 			l[i].sum = value;
@@ -79,8 +83,8 @@ export const operations = {
 	},
 	
 	applyWeight: function(ll, w, lr, activator) {
-		let nr = lr.length;
-		let nc = ll.length;
+		let nr = w.length;
+		let nc = w[0].length;
 		
 		for (let i = 0; i < nr; i++) {
 			let node = lr[i];
@@ -116,8 +120,8 @@ export const operations = {
 	},
 	
 	applyGradient(ll, w, lr, activator, lrate) {
-		let nr = ll.length;
-		let nc = lr.length;
+		let nr = w[0].length - 1;
+		let nc = w.length;
 		
 		for (let i = 0; i < nr; i++) {
 			let node = ll[i];
@@ -132,6 +136,14 @@ export const operations = {
 			}
 			
 			node.gradient = activator.value(node.sum) * gradient;
+		}
+		
+		let bias = ll[nr];
+		for (let i = 0; i < nc; i++) {
+			let wt = w[i][nr];
+			let rgradient = lr[i].gradient;
+			
+			w[i][nr] = wt - bias.out * rgradient * lrate;
 		}
 	}
 };
@@ -153,6 +165,7 @@ export const matrix = {
 		let activator = activatorFactory.getActivator(config.activatorName);
 		
 		operations.applyInput(layers[0], input);
+		
 		for (let i = 0; i < weights.length; i++) {
 			operations.applyWeight(layers[i], weights[i], layers[i + 1], activator);
 		}

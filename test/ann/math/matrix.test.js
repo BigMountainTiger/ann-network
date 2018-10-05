@@ -8,25 +8,25 @@ it('network initiator Test', () => {
 	
 	let layers = initiator.initLayers(config);
 	expect(layers.length).toEqual(3);
-	expect(layers[0].length).toEqual(2);
-	expect(layers[1].length).toEqual(3);
+	expect(layers[0].length).toEqual(3);
+	expect(layers[1].length).toEqual(4);
 	expect(layers[2].length).toEqual(1);
 	
 	let weights = initiator.initWeights(config);
 	expect(weights.length).toEqual(2);
 	let w0 = weights[0], w1 = weights[1];
 	expect(w0.length).toEqual(3);
-	expect(w0[0].length).toEqual(2);
+	expect(w0[0].length).toEqual(3);
 	expect(w1.length).toEqual(1);
-	expect(w1[0].length).toEqual(3);
+	expect(w1[0].length).toEqual(4);
 	
 	// Configuration 2
 	config = new annConfig(2, 1, [3, 3], 'signoid');
 	layers = initiator.initLayers(config);
 	expect(layers.length).toEqual(4);
-	expect(layers[0].length).toEqual(2);
-	expect(layers[1].length).toEqual(3);
-	expect(layers[2].length).toEqual(3);
+	expect(layers[0].length).toEqual(3);
+	expect(layers[1].length).toEqual(4);
+	expect(layers[2].length).toEqual(4);
 	expect(layers[3].length).toEqual(1);
 	
 	weights = initiator.initWeights(config);
@@ -35,11 +35,11 @@ it('network initiator Test', () => {
 	w1 = weights[1];
 	let w2 = weights[2];
 	expect(w0.length).toEqual(3);
-	expect(w0[0].length).toEqual(2);
+	expect(w0[0].length).toEqual(3);
 	expect(w1.length).toEqual(3);
-	expect(w1[0].length).toEqual(3);
+	expect(w1[0].length).toEqual(4);
 	expect(w2.length).toEqual(1);
-	expect(w2[0].length).toEqual(3);
+	expect(w2[0].length).toEqual(4);
 	
 });
 
