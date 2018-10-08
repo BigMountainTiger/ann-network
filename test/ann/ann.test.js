@@ -20,27 +20,27 @@ it('ann forward Test', () => {
 });
 
 it('ann training Test', () => {
-	
 	//linear, signoid, ReLU
-	let config = new annConfig(2, 2, [4, 4], 'ReLU', 0.001);
+	let config = new annConfig(2, 1, [4], 'ReLU', 0.01);
 	let nn = new ann().initiate(config);
 	
 	let data = [];
-	data.push([[0, 0], [0, 1]]);
-	data.push([[1, 1], [0, 1]]);
-	data.push([[0, 1], [1, 1]]);
-	data.push([[1, 0], [1, 1]]);
+	data.push([[0, 0], [0]]);
+	data.push([[1, 1], [0]]);
+	data.push([[0, 1], [1]]);
+	data.push([[1, 0], [1]]);
 	
-	for (let i = 0; i < 100000; i++) {
+	for (let i = 0; i < 10000; i++) {
 		for (let j = 0; j < data.length; j++) {
 			nn.train(data[j]);
-			
-			
 		}
 	}
 	
+	let result = [];
 	for (let i = 0; i < data.length; i++) {
-		console.log(nn.forward(data[i][0]));
+		result.push(parseFloat(nn.forward(data[i][0])).toFixed(2));
 	}
+	
+	console.log(result);
 
 });
