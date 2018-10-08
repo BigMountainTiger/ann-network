@@ -10,21 +10,6 @@ export class biasnode {
 	constructor() { this.out = 1; }
 }
 
-export class annConfig {
-	constructor(numOfInputs,
-			numberOfOutputs,
-			hiddenlayers,
-			activatorName,
-			learningRate) {
-		
-		this.numOfInputs = numOfInputs;
-		this.numberOfOutputs = numberOfOutputs;
-		this.hiddenlayers = hiddenlayers;
-		this.activatorName = activatorName;
-		this.learningRate = learningRate? learningRate: 1;
-	}
-}
-
 export class network {
 	constructor(config) {
 		this.config = config;

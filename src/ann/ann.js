@@ -1,5 +1,5 @@
-import {matrix} from './math/matrix';
-import {node, annConfig, network} from './network/network';
+import { matrix } from './math/matrix';
+import { network } from './network/network';
 
 export class ann {
 	constructor() { this.nn = null }
