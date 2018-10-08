@@ -1,14 +1,8 @@
-import { initiator } from './initiator';
 import { operations } from './operations';
-import {activatorFactory} from '../activations/activatorFactory';
+import { activatorFactory } from '../activations/activatorFactory';
 
 export const operator = {
-
-	init: function(nn) {
-		nn.layers = initiator.initLayers(nn.config);
-		nn.weights = initiator.initWeights(nn.config);
-	},
-	
+		
 	forward: function(nn, input) {
 		let config = nn.config;
 		let layers = nn.layers;

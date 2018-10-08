@@ -1,8 +1,7 @@
-import { ann } from '../src/ann/ann';
 import { config } from '../src/ann/network/config';
-import { node } from '../src/ann/network/network';
+import { ann } from '../src/ann/ann';
 
-it('nural network training Test', () => {
+it('Nural network training Test', () => {
 
 	let conf = new config(2, 1, [4], 'ReLU', 0.01);
 	let nn = new ann().initiate(conf);

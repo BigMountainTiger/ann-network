@@ -1,5 +1,6 @@
-import { operator } from './math/operator';
 import { network } from './network/network';
+import { initiator } from './network-operators/initiator';
+import { operator } from './network-operators/operator';
 
 export class ann {
 	constructor() { this.nn = null }
@@ -7,7 +8,7 @@ export class ann {
 	initiate(config) {
 		
 		this.nn = new network(config);
-		operator.init(this.nn);
+		initiator.initNetwork(this.nn);
 		
 		return this;
 	}
