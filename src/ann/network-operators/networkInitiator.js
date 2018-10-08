@@ -1,6 +1,6 @@
 import {node, biasnode} from '../network/node';
 
-export const initiator = function() {
+export const networkInitiator = function() {
 	
 		let initLayer = function(n, skipBias) {
 			let nodes = [];

@@ -1,7 +1,7 @@
 import { operations } from './operations';
 import { activatorFactory } from '../activations/activatorFactory';
 
-export const operator = {
+export const networkOperator = {
 		
 	forward: function(nn, input) {
 		let config = nn.config;
