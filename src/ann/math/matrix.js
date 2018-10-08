@@ -1,4 +1,4 @@
-import {node, biasnode} from '../network/network';
+import {node, biasnode} from '../network/node';
 import {activatorFactory} from '../activations/activatorFactory';
 
 export const initiator = function() {
