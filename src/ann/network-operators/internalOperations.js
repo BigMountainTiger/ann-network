@@ -1,4 +1,4 @@
-export const operations = {
+export const internalOperations = {
 	applyInput: function(l, input) {
 		
 		let length = input.length;

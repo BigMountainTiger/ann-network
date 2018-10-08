@@ -3,7 +3,7 @@ import { networkInitiator } from './network-operators/networkInitiator';
 import { networkOperator } from './network-operators/networkOperator';
 
 export class ann {
-	constructor() { this.nn = null }
+	constructor() { this.nn = null; }
 	
 	initiate(config) {
 		

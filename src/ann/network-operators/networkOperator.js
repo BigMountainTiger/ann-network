@@ -1,4 +1,4 @@
-import { operations } from './operations';
+import { internalOperations } from './internalOperations';
 import { activatorFactory } from '../activations/activatorFactory';
 
 export const networkOperator = {
@@ -9,10 +9,10 @@ export const networkOperator = {
 		let weights = nn.weights;
 		let activator = activatorFactory.getActivator(config.activatorName);
 		
-		operations.applyInput(layers[0], input);
+		internalOperations.applyInput(layers[0], input);
 		
 		for (let i = 0; i < weights.length; i++) {
-			operations.applyWeight(layers[i], weights[i], layers[i + 1], activator);
+			internalOperations.applyWeight(layers[i], weights[i], layers[i + 1], activator);
 		}
 		
 		return nn.getOutput();
@@ -24,9 +24,9 @@ export const networkOperator = {
 		let weights = nn.weights;
 		let activator = activatorFactory.getActivator(config.activatorName);
 		
-		operations.applyDiff(layers[layers.length - 1], diff, activator);
+		internalOperations.applyDiff(layers[layers.length - 1], diff, activator);
 		for (let i = layers.length - 1; i > 0; i--) {
-			operations.applyGradient(layers[i - 1], weights[i - 1], layers[i],
+			internalOperations.applyGradient(layers[i - 1], weights[i - 1], layers[i],
 					activator, config.learningRate);
 		}
 	},
@@ -35,7 +35,7 @@ export const networkOperator = {
 		let input = data[0];
 		let desired = data[1];
 		
-		let diff = operations.getDiff(this.forward(nn, input), desired)
+		let diff = internalOperations.getDiff(this.forward(nn, input), desired)
 		this.backward(nn, diff);
 		
 		return diff;
