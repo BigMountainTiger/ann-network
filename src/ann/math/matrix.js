@@ -3,12 +3,9 @@ import { operations } from './operations';
 import {activatorFactory} from '../activations/activatorFactory';
 
 export const matrix = {
-	
-	initLayers: function(nn) {
+
+	init: function(nn) {
 		nn.layers = initiator.initLayers(nn.config);
-	},
-	
-	initWeights: function(nn) {
 		nn.weights = initiator.initWeights(nn.config);
 	},
 	

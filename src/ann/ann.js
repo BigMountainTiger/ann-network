@@ -5,11 +5,9 @@ export class ann {
 	constructor() { this.nn = null }
 	
 	initiate(config) {
-		this.nn = new network(config);
 		
-		let nn = this.nn;
-		matrix.initLayers(nn);
-		matrix.initWeights(nn);
+		this.nn = new network(config);
+		matrix.init(this.nn);
 		
 		return this;
 	}
