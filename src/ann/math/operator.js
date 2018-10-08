@@ -2,7 +2,7 @@ import { initiator } from './initiator';
 import { operations } from './operations';
 import {activatorFactory} from '../activations/activatorFactory';
 
-export const matrix = {
+export const operator = {
 
 	init: function(nn) {
 		nn.layers = initiator.initLayers(nn.config);
