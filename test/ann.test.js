@@ -23,7 +23,7 @@ it('nural network training Test', () => {
 	// Validate the result
 	let result = [];
 	for (let i = 0; i < data.length; i++) {
-		let r = parseFloat(nn.forward(data[i][0])[0]).toFixed(2);
+		let r = nn.forward(data[i][0])[0];
 		result.push([...data[i][0], ...[r]])
 	}
 	
