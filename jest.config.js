@@ -1,6 +1,6 @@
 let config = {
   "verbose": false,
-	"testMatch": [ "<rootDir>/test/**/?(*.)(test).{js}" ],
+	"testMatch": [ "<rootDir>/src/test/**/?(*.)(test).{js}" ],
 	"collectCoverage": false,
 	"coverageReporters": [ "html" ],
 	"collectCoverageFrom": [ "src/**/*.{js}" ],

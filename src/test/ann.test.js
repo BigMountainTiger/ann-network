@@ -1,5 +1,5 @@
-import { config } from '../src/ann/network/config';
-import { ann } from '../src/ann/ann';
+import { config } from '../ann/network/config';
+import { ann } from '../ann/ann';
 
 it('Nural network training Test', () => {
 
